@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HargaJualCalculator from "../../components/HargaJualCalculator.tsx";
+
+const faq = [
+  {
+    q: "Biaya apa saja yang harus dihitung?",
+    a: "Minimal: modal produk, biaya packing, fee marketplace, dan biaya iklan per produk. Jika memakai affiliate, masukkan juga komisinya.",
+  },
+  {
+    q: "Berapa target untung yang wajar?",
+    a: "Tidak ada angka pasti. Banyak seller kecil mengincar 15-30%. Yang penting margin cukup untuk menutup retur dan biaya tak terduga.",
+  },
+  {
+    q: "Apakah fee Shopee tetap?",
+    a: "Tidak. Fee berbeda per kategori dan dapat berubah. Selalu cek tarif terbaru di akun seller Anda lalu isi manual di kalkulator.",
+  },
+];
+---
+
+<BaseLayout
+  title="Cara Hitung Harga Jual di Shopee Agar Tetap Untung"
+  description="Panduan langkah demi langkah menghitung harga jual minimum di Shopee setelah modal, fee, diskon, dan biaya iklan, lengkap dengan kalkulator."
+>
+  <article class="grid gap-8">
+    <header>
+      <p class="text-sm text-teal-600">
+        <a href="/artikel" class="hover:underline">Panduan</a>
+      </p>
+      <h1 class="mt-1 text-2xl font-bold text-slate-900">
+        Cara Hitung Harga Jual di Shopee Agar Tetap Untung
+      </h1>
+    </header>
+
+    <section class="grid gap-3 text-slate-600">
+      <p>
+        Banyak seller menentukan harga jual dengan menebak atau meniru kompetitor.
+        Akibatnya, harga terlihat menarik tetapi untung tipis atau malah rugi
+        setelah dipotong fee marketplace.
+      </p>
+      <p>
+        Cara yang lebih aman: hitung dulu total biaya per produk, lalu tambahkan
+        target untung. Total biaya mencakup modal produk, biaya packing, fee
+        marketplace, komisi affiliate (jika ada), dan biaya iklan per produk.
+      </p>
+    </section>
+
+    <section class="rounded-xl border border-slate-200 bg-white p-4">
+      <h2 class="text-lg font-semibold text-slate-900">Contoh angka</h2>
+      <p class="mt-2 text-sm text-slate-600">
+        Modal Rp20.000, packing Rp2.000, iklan Rp1.000, fee 8%, target untung
+        15%. Total biaya tetap Rp23.000. Harga jual minimum = 23.000 ÷ (1 − 0,08
+        − 0,15) ≈ <strong>Rp29.870</strong>. Menjual di bawah angka itu berarti
+        untung lebih kecil dari target.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="mb-3 text-lg font-semibold text-slate-900">
+        Hitung dengan angka toko Anda
+      </h2>
+      <HargaJualCalculator client:load />
+    </section>
+
+    <section class="rounded-xl border border-slate-200 bg-white p-4">
+      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+        <li>Lupa memasukkan biaya packing dan iklan.</li>
+        <li>Mengira fee dihitung dari modal, padahal dari harga jual.</li>
+        <li>Tidak menyisakan margin untuk retur dan refund.</li>
+      </ul>
+    </section>
+
+    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
+      <h2 class="text-lg font-semibold text-teal-800">Catat profit Anda</h2>
+      <p class="mt-1 text-sm text-teal-700">
+        Setelah tahu harga jual, pantau hasilnya dengan
+        <a
+          href="/template"
+          class="font-semibold underline"
+          data-ga-event="cta_template_diklik"
+          data-ga-lokasi="artikel-harga-jual"
+        >
+          Bundle Template Seller Marketplace</a
+        >.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
+      <div class="mt-2 grid gap-3">
+        {
+          faq.map((item) => (
+            <details class="rounded-lg border border-slate-200 bg-white p-3">
+              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+                {item.q}
+              </summary>
+              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</BaseLayout>

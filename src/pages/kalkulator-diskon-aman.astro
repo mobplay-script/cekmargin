@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DiskonAmanCalculator from "../components/DiskonAmanCalculator.tsx";
+
+const faq = [
+  {
+    q: "Apa beda 'diskon maksimum aman' dan 'titik rugi'?",
+    a: "Diskon maksimum aman adalah batas diskon agar margin tetap minimal 5%. Titik rugi adalah diskon yang membuat untung jadi nol. Di antara keduanya, Anda masih untung tetapi sangat tipis.",
+  },
+  {
+    q: "Kenapa untung saya habis padahal diskonnya kecil?",
+    a: "Karena fee marketplace dan komisi affiliate dihitung dari harga jual. Diskon memotong harga, sementara biaya tetap seperti modal dan packing tidak ikut turun.",
+  },
+  {
+    q: "Apakah aman ikut promo besar?",
+    a: "Cek dulu dengan kalkulator ini. Jika diskon promo melebihi diskon maksimum aman, pertimbangkan menaikkan harga normal lebih dulu atau tidak ikut promo tersebut.",
+  },
+];
+---
+
+<BaseLayout
+  title="Kalkulator Diskon Agar Tetap Untung | Toolkit Seller Indonesia"
+  description="Cek apakah diskon promo masih untung. Hitung untung setelah diskon, diskon maksimum aman, dan titik rugi untuk seller marketplace."
+>
+  <article class="grid gap-8">
+    <header>
+      <h1 class="text-2xl font-bold text-slate-900">
+        Kalkulator Diskon Agar Tetap Untung
+      </h1>
+      <p class="mt-2 text-slate-600">
+        Ikut promo 10%, 20%, atau 30% terdengar menarik, tetapi belum tentu masih
+        untung. Kalkulator ini menghitung untung setelah diskon, batas diskon
+        aman, dan titik rugi berdasarkan angka toko Anda.
+      </p>
+    </header>
+
+    <section>
+      <DiskonAmanCalculator client:load />
+    </section>
+
+    <section class="rounded-xl border border-slate-200 bg-white p-4">
+      <h2 class="text-lg font-semibold text-slate-900">Contoh perhitungan</h2>
+      <p class="mt-2 text-sm text-slate-600">
+        Harga normal Rp50.000, modal Rp25.000, packing Rp2.000, iklan Rp0, fee
+        8%. Tanpa diskon, untung ≈ Rp19.000. Dengan diskon 20%, harga jadi
+        Rp40.000 dan untung turun ≈ <strong>Rp9.800</strong>. Titik rugi ada di
+        sekitar diskon 41%.
+      </p>
+    </section>
+
+    <section class="rounded-xl border border-slate-200 bg-white p-4">
+      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+        <li>Mengira diskon 20% hanya mengurangi untung 20%.</li>
+        <li>Ikut beberapa promo bertumpuk tanpa menghitung total potongan.</li>
+        <li>Lupa bahwa fee marketplace tetap dipotong dari harga setelah diskon.</li>
+        <li>Memberi diskon melebihi titik rugi demi mengejar jumlah order.</li>
+      </ul>
+    </section>
+
+    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
+      <h2 class="text-lg font-semibold text-teal-800">
+        Mau simulasi diskon lebih rapi?
+      </h2>
+      <p class="mt-1 text-sm text-teal-700">
+        Template simulasi diskon di
+        <a
+          href="/template"
+          class="font-semibold underline"
+          data-ga-event="cta_template_diklik"
+          data-ga-lokasi="kalkulator-diskon-aman"
+          >Bundle Template Seller Marketplace</a
+        > membantu Anda merencanakan promo tanpa rugi.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
+      <div class="mt-2 grid gap-3">
+        {
+          faq.map((item) => (
+            <details class="rounded-lg border border-slate-200 bg-white p-3">
+              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+                {item.q}
+              </summary>
+              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</BaseLayout>

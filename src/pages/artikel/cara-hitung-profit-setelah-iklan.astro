@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import IklanProfitCalculator from "../../components/IklanProfitCalculator.tsx";
+
+const faq = [
+  {
+    q: "Apakah ROAS tinggi pasti untung?",
+    a: "Tidak. ROAS hanya membandingkan omzet dengan biaya iklan. Jika modal produk dan fee marketplace besar, untung bersih bisa tetap kecil walau ROAS tinggi.",
+  },
+  {
+    q: "Kenapa omzet naik tapi saldo tidak bertambah?",
+    a: "Iklan menambah omzet sekaligus menambah biaya. Bila untung per order lebih kecil dari biaya iklan per order, total bisa rugi.",
+  },
+  {
+    q: "Bagaimana cara menilai iklan dengan benar?",
+    a: "Lihat untung bersih setelah semua biaya, bukan hanya omzet atau ROAS. Hitung juga biaya iklan per order.",
+  },
+];
+---
+
+<BaseLayout
+  title="Cara Hitung Profit Setelah Iklan Marketplace"
+  description="Panduan menghitung untung bersih setelah biaya iklan, biaya iklan per order, dan ROAS untuk seller marketplace Indonesia."
+>
+  <article class="grid gap-8">
+    <header>
+      <p class="text-sm text-teal-600">
+        <a href="/artikel" class="hover:underline">Panduan</a>
+      </p>
+      <h1 class="mt-1 text-2xl font-bold text-slate-900">
+        Cara Hitung Profit Setelah Iklan Marketplace
+      </h1>
+    </header>
+
+    <section class="grid gap-3 text-slate-600">
+      <p>
+        Setelah memasang iklan, omzet biasanya naik. Tetapi omzet besar belum
+        tentu berarti untung besar. Iklan adalah biaya tambahan yang harus
+        ditutup oleh margin produk.
+      </p>
+      <p>
+        Untuk menilai iklan dengan benar, hitung untung bersih: omzet dikurangi
+        modal seluruh order, fee marketplace, dan biaya iklan. Bandingkan juga
+        biaya iklan per order dengan untung per order.
+      </p>
+    </section>
+
+    <section class="rounded-xl border border-slate-200 bg-white p-4">
+      <h2 class="text-lg font-semibold text-slate-900">Contoh angka</h2>
+      <p class="mt-2 text-sm text-slate-600">
+        Biaya iklan Rp200.000, omzet Rp1.000.000, 20 order, modal Rp25.000 per
+        order, fee 8%. Untung bersih = 1.000.000 − 500.000 − 80.000 − 200.000 =
+        <strong>Rp220.000</strong>. Biaya iklan per order Rp10.000, ROAS 5x.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="mb-3 text-lg font-semibold text-slate-900">
+        Hitung profit iklan Anda
+      </h2>
+      <IklanProfitCalculator client:load />
+    </section>
+
+    <section class="rounded-xl border border-slate-200 bg-white p-4">
+      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+        <li>Menilai iklan hanya dari ROAS tanpa melihat untung bersih.</li>
+        <li>Menganggap semua order berasal dari iklan, padahal sebagian organik.</li>
+        <li>Menaikkan budget iklan saat margin produk masih tipis.</li>
+      </ul>
+    </section>
+
+    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
+      <h2 class="text-lg font-semibold text-teal-800">Pantau iklan tiap bulan</h2>
+      <p class="mt-1 text-sm text-teal-700">
+        Template laporan penjualan di
+        <a
+          href="/template"
+          class="font-semibold underline"
+          data-ga-event="cta_template_diklik"
+          data-ga-lokasi="artikel-iklan"
+        >
+          Bundle Template Seller Marketplace</a
+        >
+        membantu Anda melacak biaya iklan dan untung bersih bulanan.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
+      <div class="mt-2 grid gap-3">
+        {
+          faq.map((item) => (
+            <details class="rounded-lg border border-slate-200 bg-white p-3">
+              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+                {item.q}
+              </summary>
+              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</BaseLayout>

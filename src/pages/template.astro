@@ -1,0 +1,133 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NewsletterForm from "../components/NewsletterForm.tsx";
+
+const isiBundle = [
+  "Template profit per produk",
+  "Template stok barang",
+  "Template laporan penjualan",
+  "Template simulasi diskon",
+  "Template simulasi affiliate",
+  "Template target omzet bulanan",
+  "Template profit per SKU",
+  "Template laporan bulanan sederhana",
+];
+
+const paket = [
+  {
+    nama: "Template Mini",
+    harga: "Rp19.000",
+    desc: "Satu template inti untuk mulai mencatat profit.",
+    isi: ["Template profit per produk"],
+    sorot: false,
+  },
+  {
+    nama: "Bundle Basic",
+    harga: "Rp49.000",
+    desc: "Template dasar untuk mencatat profit dan stok.",
+    isi: [
+      "Template profit per produk",
+      "Template stok barang",
+      "Template laporan penjualan",
+    ],
+    sorot: false,
+  },
+  {
+    nama: "Bundle Lengkap",
+    harga: "Rp99.000",
+    desc: "Semua 8 template untuk seller yang serius.",
+    isi: ["Semua 8 template di atas"],
+    sorot: true,
+  },
+  {
+    nama: "Bundle Premium + Video",
+    harga: "Rp199.000",
+    desc: "Bundle lengkap plus video panduan pemakaian.",
+    isi: ["Semua 8 template", "Video panduan pemakaian"],
+    sorot: false,
+  },
+];
+---
+
+<BaseLayout
+  title="Bundle Template Seller Marketplace | Toolkit Seller Indonesia"
+  description="Template Google Sheets untuk mencatat profit per produk, stok barang, dan laporan penjualan marketplace. Mulai dari Rp19.000."
+>
+  <article class="grid gap-8">
+    <header>
+      <h1 class="text-2xl font-bold text-slate-900">
+        Bundle Template Seller Marketplace
+      </h1>
+      <p class="mt-2 text-slate-600">
+        Kalkulator membantu Anda menghitung sebelum jualan. Template membantu
+        Anda mencatat dan memantau hasilnya tiap hari. Semua template berformat
+        Google Sheets — tinggal salin dan isi.
+      </p>
+    </header>
+
+    <section class="rounded-xl border border-slate-200 bg-white p-4">
+      <h2 class="text-lg font-semibold text-slate-900">Isi lengkap bundle</h2>
+      <ul class="mt-2 grid gap-1 sm:grid-cols-2">
+        {
+          isiBundle.map((item) => (
+            <li class="flex gap-2 text-sm text-slate-600">
+              <span class="text-teal-600">✓</span>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="grid gap-4 sm:grid-cols-2">
+      {
+        paket.map((p) => (
+          <div
+            class={
+              "flex flex-col rounded-xl border p-4 " +
+              (p.sorot
+                ? "border-teal-500 bg-teal-50"
+                : "border-slate-200 bg-white")
+            }
+          >
+            {p.sorot && (
+              <span class="mb-1 text-xs font-bold uppercase tracking-wide text-teal-700">
+                Paling lengkap
+              </span>
+            )}
+            <h3 class="text-base font-semibold text-slate-900">{p.nama}</h3>
+            <p class="mt-1 text-2xl font-bold text-teal-700">{p.harga}</p>
+            <p class="mt-1 text-sm text-slate-600">{p.desc}</p>
+            <ul class="mt-2 mb-4 grid gap-1">
+              {p.isi.map((i) => (
+                <li class="flex gap-2 text-sm text-slate-600">
+                  <span class="text-teal-600">✓</span>
+                  {i}
+                </li>
+              ))}
+            </ul>
+            <span class="mt-auto rounded-lg bg-slate-200 px-4 py-3 text-center text-sm font-semibold text-slate-500">
+              Segera hadir
+            </span>
+          </div>
+        ))
+      }
+    </section>
+
+    <p class="text-sm text-slate-500">
+      Tombol pembelian akan aktif setelah halaman pembayaran (mis. Lynk.id atau
+      Gumroad) terhubung. Daftar di bawah agar mendapat kabar saat bundle rilis.
+    </p>
+
+    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
+      <h2 class="text-lg font-semibold text-teal-800">
+        Dapatkan template gratis lebih dulu
+      </h2>
+      <p class="mt-1 mb-3 text-sm text-teal-700">
+        Daftar email Anda untuk menerima satu template profit gratis dan kabar
+        saat bundle lengkap rilis.
+      </p>
+      <NewsletterForm client:load />
+    </section>
+  </article>
+</BaseLayout>

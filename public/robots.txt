@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Ganti domain di bawah dengan domain final Anda saat memakai domain sendiri.
+Sitemap: https://toolkit-seller-indonesia.pages.dev/sitemap-index.xml

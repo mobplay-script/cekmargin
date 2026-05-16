@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import IklanProfitCalculator from "../components/IklanProfitCalculator.tsx";
+
+const faq = [
+  {
+    q: "Apa itu ROAS?",
+    a: "ROAS adalah perbandingan omzet dengan biaya iklan. ROAS 5x berarti tiap Rp1 iklan menghasilkan Rp5 omzet. Tetapi ROAS tinggi belum tentu untung jika modal dan fee besar.",
+  },
+  {
+    q: "Kenapa omzet naik tapi saya tetap rugi?",
+    a: "Iklan menambah omzet sekaligus menambah biaya. Jika untung per produk lebih kecil dari biaya iklan per order, total Anda bisa rugi walau omzet terlihat besar.",
+  },
+  {
+    q: "Berapa ROAS yang aman?",
+    a: "Tidak ada angka pasti karena bergantung margin produk. Pakai kalkulator ini untuk melihat untung bersih dan status keputusannya, bukan hanya ROAS.",
+  },
+];
+---
+
+<BaseLayout
+  title="Kalkulator Iklan vs Profit | Toolkit Seller Indonesia"
+  description="Hitung untung bersih setelah biaya iklan, biaya iklan per order, ROAS, dan margin akhir untuk seller marketplace Indonesia."
+>
+  <article class="grid gap-8">
+    <header>
+      <h1 class="text-2xl font-bold text-slate-900">
+        Kalkulator Iklan vs Profit
+      </h1>
+      <p class="mt-2 text-slate-600">
+        Setelah pasang iklan, omzet biasanya naik. Tetapi untung belum tentu ikut
+        naik. Kalkulator ini menghitung untung bersih setelah biaya iklan, biaya
+        iklan per order, dan ROAS sederhana.
+      </p>
+    </header>
+
+    <section>
+      <IklanProfitCalculator client:load />
+    </section>
+
+    <section class="rounded-xl border border-slate-200 bg-white p-4">
+      <h2 class="text-lg font-semibold text-slate-900">Contoh perhitungan</h2>
+      <p class="mt-2 text-sm text-slate-600">
+        Biaya iklan Rp200.000, omzet Rp1.000.000, 20 order, modal Rp25.000 per
+        order, fee 8%. Untung bersih = 1.000.000 − 500.000 − 80.000 − 200.000 =
+        <strong>Rp220.000</strong>. Biaya iklan per order Rp10.000 dan ROAS 5x.
+      </p>
+    </section>
+
+    <section class="rounded-xl border border-slate-200 bg-white p-4">
+      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+        <li>Menilai iklan hanya dari ROAS tanpa melihat untung bersih.</li>
+        <li>Lupa memasukkan fee marketplace ke dalam hitungan.</li>
+        <li>Menganggap semua order berasal dari iklan, padahal sebagian organik.</li>
+        <li>Menaikkan budget iklan saat margin produk masih tipis.</li>
+      </ul>
+    </section>
+
+    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
+      <h2 class="text-lg font-semibold text-teal-800">
+        Mau pantau profit tiap bulan?
+      </h2>
+      <p class="mt-1 text-sm text-teal-700">
+        Template laporan penjualan di
+        <a
+          href="/template"
+          class="font-semibold underline"
+          data-ga-event="cta_template_diklik"
+          data-ga-lokasi="kalkulator-iklan-profit"
+          >Bundle Template Seller Marketplace</a
+        > membantu Anda melacak biaya iklan dan untung bersih bulanan.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
+      <div class="mt-2 grid gap-3">
+        {
+          faq.map((item) => (
+            <details class="rounded-lg border border-slate-200 bg-white p-3">
+              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+                {item.q}
+              </summary>
+              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</BaseLayout>
