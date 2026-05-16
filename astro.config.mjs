@@ -8,7 +8,7 @@ const { SITE_URL } = loadEnv(process.env.NODE_ENV || 'production', process.cwd()
 
 // URL situs untuk sitemap & canonical. Saat memakai domain sendiri, set
 // SITE_URL di file .env atau di environment variable dashboard hosting.
-const site = SITE_URL || 'https://toolkit-seller-indonesia.pages.dev';
+const site = SITE_URL || 'https://cekmargin.pages.dev';
 
 export default defineConfig({
   site,
