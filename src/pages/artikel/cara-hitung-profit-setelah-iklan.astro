@@ -21,18 +21,23 @@ const faq = [
 <BaseLayout
   title="Cara Hitung Profit Setelah Iklan Marketplace"
   description="Panduan menghitung untung bersih setelah biaya iklan, biaya iklan per order, dan ROAS untuk seller marketplace Indonesia."
+  activeNav="panduan"
 >
-  <article class="grid gap-8">
+  <article class="grid gap-6">
     <header>
-      <p class="text-sm text-teal-600">
-        <a href="/artikel" class="hover:underline">Panduan</a>
-      </p>
-      <h1 class="mt-1 text-2xl font-bold text-slate-900">
+      <a
+        href="/artikel"
+        class="inline-flex items-center gap-1 text-sm font-semibold text-primary"
+      >
+        <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+        Panduan
+      </a>
+      <h1 class="mt-2 text-2xl font-bold text-ink">
         Cara Hitung Profit Setelah Iklan Marketplace
       </h1>
     </header>
 
-    <section class="grid gap-3 text-slate-600">
+    <section class="grid gap-3 text-secondary">
       <p>
         Setelah memasang iklan, omzet biasanya naik. Tetapi omzet besar belum
         tentu berarti untung besar. Iklan adalah biaya tambahan yang harus
@@ -45,9 +50,9 @@ const faq = [
       </p>
     </section>
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Contoh angka</h2>
-      <p class="mt-2 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Contoh angka</h2>
+      <p class="mt-2 text-sm text-secondary">
         Biaya iklan Rp200.000, omzet Rp1.000.000, 20 order, modal Rp25.000 per
         order, fee 8%. Untung bersih = 1.000.000 − 500.000 − 80.000 − 200.000 =
         <strong>Rp220.000</strong>. Biaya iklan per order Rp10.000, ROAS 5x.
@@ -55,47 +60,50 @@ const faq = [
     </section>
 
     <section>
-      <h2 class="mb-3 text-lg font-semibold text-slate-900">
+      <h2 class="mb-3 text-lg font-semibold text-ink">
         Hitung profit iklan Anda
       </h2>
       <IklanProfitCalculator client:load />
     </section>
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
-      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-secondary">
         <li>Menilai iklan hanya dari ROAS tanpa melihat untung bersih.</li>
         <li>Menganggap semua order berasal dari iklan, padahal sebagian organik.</li>
         <li>Menaikkan budget iklan saat margin produk masih tipis.</li>
       </ul>
     </section>
 
-    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
-      <h2 class="text-lg font-semibold text-teal-800">Pantau iklan tiap bulan</h2>
-      <p class="mt-1 text-sm text-teal-700">
-        Template laporan penjualan di
-        <a
-          href="/template"
-          class="font-semibold underline"
-          data-ga-event="cta_template_diklik"
-          data-ga-lokasi="artikel-iklan"
-        >
-          Bundle Template Seller Marketplace</a
-        >
-        membantu Anda melacak biaya iklan dan untung bersih bulanan.
+    <section class="rounded-2xl bg-primary-container p-5 text-center soft-shadow">
+      <h2 class="text-lg font-semibold text-on-primary">
+        Pantau iklan tiap bulan
+      </h2>
+      <p class="mt-1 mb-3 text-sm text-on-primary-container">
+        Template laporan penjualan di Bundle Template Seller Marketplace membantu
+        Anda melacak biaya iklan dan untung bersih bulanan.
       </p>
+      <a
+        href="/template"
+        class="inline-flex items-center gap-1 rounded-lg bg-surface px-5 py-2.5 text-sm font-semibold text-primary"
+        data-ga-event="cta_template_diklik"
+        data-ga-lokasi="artikel-iklan"
+      >
+        Lihat template
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
-      <div class="mt-2 grid gap-3">
+      <h2 class="mb-2 text-lg font-semibold text-ink">Pertanyaan umum</h2>
+      <div class="grid gap-2">
         {
           faq.map((item) => (
-            <details class="rounded-lg border border-slate-200 bg-white p-3">
-              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+            <details class="rounded-lg border border-outline-variant bg-surface p-3">
+              <summary class="cursor-pointer text-sm font-semibold text-ink">
                 {item.q}
               </summary>
-              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+              <p class="mt-2 text-sm text-secondary">{item.a}</p>
             </details>
           ))
         }

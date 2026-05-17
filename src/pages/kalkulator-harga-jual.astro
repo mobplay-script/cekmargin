@@ -22,25 +22,23 @@ const faq = [
   title="Kalkulator Harga Jual Marketplace | Toolkit Seller Indonesia"
   description="Hitung harga jual minimum agar tetap untung setelah modal, biaya packing, fee marketplace, diskon, komisi affiliate, dan biaya iklan."
 >
-  <article class="grid gap-8">
+  <article class="grid gap-6">
     <header>
-      <h1 class="text-2xl font-bold text-slate-900">
+      <h1 class="text-2xl font-bold text-ink">
         Kalkulator Harga Jual Marketplace
       </h1>
-      <p class="mt-2 text-slate-600">
+      <p class="mt-2 text-secondary">
         Banyak seller menebak harga jual tanpa tahu batas amannya. Kalkulator ini
         menghitung perkiraan harga jual minimum agar Anda tetap untung setelah
         modal, biaya packing, fee marketplace, diskon, komisi affiliate, dan iklan.
       </p>
     </header>
 
-    <section>
-      <HargaJualCalculator client:load />
-    </section>
+    <HargaJualCalculator client:load />
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Contoh perhitungan</h2>
-      <p class="mt-2 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Contoh perhitungan</h2>
+      <p class="mt-2 text-sm text-secondary">
         Modal Rp20.000, packing Rp2.000, iklan Rp1.000, fee 8%, affiliate 0%,
         diskon 0%, target untung 15%. Total biaya tetap = Rp23.000. Harga jual
         minimum = 23.000 ÷ (1 − 0,08 − 0,15) = 23.000 ÷ 0,77 ≈
@@ -48,9 +46,9 @@ const faq = [
       </p>
     </section>
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
-      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-secondary">
         <li>Lupa memasukkan biaya packing dan iklan ke dalam hitungan.</li>
         <li>Mengira fee marketplace dihitung dari modal, padahal dari harga jual.</li>
         <li>Memakai harga jual minimum sebagai harga akhir tanpa cadangan untuk retur.</li>
@@ -58,32 +56,35 @@ const faq = [
       </ul>
     </section>
 
-    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
-      <h2 class="text-lg font-semibold text-teal-800">
+    <section class="rounded-2xl bg-primary-container p-5 text-center soft-shadow">
+      <h2 class="text-lg font-semibold text-on-primary">
         Mau mencatat profit semua produk?
       </h2>
-      <p class="mt-1 text-sm text-teal-700">
-        <a
-          href="/template"
-          class="font-semibold underline"
-          data-ga-event="cta_template_diklik"
-          data-ga-lokasi="kalkulator-harga-jual"
-          >Bundle Template Seller Marketplace</a
-        > membantu Anda mencatat profit per produk, stok, dan laporan penjualan
-        bulanan.
+      <p class="mt-1 mb-3 text-sm text-on-primary-container">
+        Bundle Template Seller Marketplace membantu Anda mencatat profit per
+        produk, stok, dan laporan penjualan bulanan.
       </p>
+      <a
+        href="/template"
+        class="inline-flex items-center gap-1 rounded-lg bg-surface px-5 py-2.5 text-sm font-semibold text-primary"
+        data-ga-event="cta_template_diklik"
+        data-ga-lokasi="kalkulator-harga-jual"
+      >
+        Lihat template
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
-      <div class="mt-2 grid gap-3">
+      <h2 class="mb-2 text-lg font-semibold text-ink">Pertanyaan umum</h2>
+      <div class="grid gap-2">
         {
           faq.map((item) => (
-            <details class="rounded-lg border border-slate-200 bg-white p-3">
-              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+            <details class="rounded-lg border border-outline-variant bg-surface p-3">
+              <summary class="cursor-pointer text-sm font-semibold text-ink">
                 {item.q}
               </summary>
-              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+              <p class="mt-2 text-sm text-secondary">{item.a}</p>
             </details>
           ))
         }

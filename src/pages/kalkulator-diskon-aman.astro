@@ -22,25 +22,23 @@ const faq = [
   title="Kalkulator Diskon Agar Tetap Untung | Toolkit Seller Indonesia"
   description="Cek apakah diskon promo masih untung. Hitung untung setelah diskon, diskon maksimum aman, dan titik rugi untuk seller marketplace."
 >
-  <article class="grid gap-8">
+  <article class="grid gap-6">
     <header>
-      <h1 class="text-2xl font-bold text-slate-900">
+      <h1 class="text-2xl font-bold text-ink">
         Kalkulator Diskon Agar Tetap Untung
       </h1>
-      <p class="mt-2 text-slate-600">
+      <p class="mt-2 text-secondary">
         Ikut promo 10%, 20%, atau 30% terdengar menarik, tetapi belum tentu masih
         untung. Kalkulator ini menghitung untung setelah diskon, batas diskon
         aman, dan titik rugi berdasarkan angka toko Anda.
       </p>
     </header>
 
-    <section>
-      <DiskonAmanCalculator client:load />
-    </section>
+    <DiskonAmanCalculator client:load />
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Contoh perhitungan</h2>
-      <p class="mt-2 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Contoh perhitungan</h2>
+      <p class="mt-2 text-sm text-secondary">
         Harga normal Rp50.000, modal Rp25.000, packing Rp2.000, iklan Rp0, fee
         8%. Tanpa diskon, untung ≈ Rp19.000. Dengan diskon 20%, harga jadi
         Rp40.000 dan untung turun ≈ <strong>Rp9.800</strong>. Titik rugi ada di
@@ -48,9 +46,9 @@ const faq = [
       </p>
     </section>
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
-      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-secondary">
         <li>Mengira diskon 20% hanya mengurangi untung 20%.</li>
         <li>Ikut beberapa promo bertumpuk tanpa menghitung total potongan.</li>
         <li>Lupa bahwa fee marketplace tetap dipotong dari harga setelah diskon.</li>
@@ -58,32 +56,35 @@ const faq = [
       </ul>
     </section>
 
-    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
-      <h2 class="text-lg font-semibold text-teal-800">
+    <section class="rounded-2xl bg-primary-container p-5 text-center soft-shadow">
+      <h2 class="text-lg font-semibold text-on-primary">
         Mau simulasi diskon lebih rapi?
       </h2>
-      <p class="mt-1 text-sm text-teal-700">
-        Template simulasi diskon di
-        <a
-          href="/template"
-          class="font-semibold underline"
-          data-ga-event="cta_template_diklik"
-          data-ga-lokasi="kalkulator-diskon-aman"
-          >Bundle Template Seller Marketplace</a
-        > membantu Anda merencanakan promo tanpa rugi.
+      <p class="mt-1 mb-3 text-sm text-on-primary-container">
+        Template simulasi diskon di Bundle Template Seller Marketplace membantu
+        Anda merencanakan promo tanpa rugi.
       </p>
+      <a
+        href="/template"
+        class="inline-flex items-center gap-1 rounded-lg bg-surface px-5 py-2.5 text-sm font-semibold text-primary"
+        data-ga-event="cta_template_diklik"
+        data-ga-lokasi="kalkulator-diskon-aman"
+      >
+        Lihat template
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
-      <div class="mt-2 grid gap-3">
+      <h2 class="mb-2 text-lg font-semibold text-ink">Pertanyaan umum</h2>
+      <div class="grid gap-2">
         {
           faq.map((item) => (
-            <details class="rounded-lg border border-slate-200 bg-white p-3">
-              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+            <details class="rounded-lg border border-outline-variant bg-surface p-3">
+              <summary class="cursor-pointer text-sm font-semibold text-ink">
                 {item.q}
               </summary>
-              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+              <p class="mt-2 text-sm text-secondary">{item.a}</p>
             </details>
           ))
         }

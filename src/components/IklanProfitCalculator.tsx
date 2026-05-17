@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import NumberInput from "./ui/NumberInput";
 import FeeSelector from "./ui/FeeSelector";
 import ResultRow from "./ui/ResultRow";
+import StatBox from "./ui/StatBox";
 import StatusBadge from "./ui/StatusBadge";
 import { hitungIklan } from "../lib/calc";
 import { parseAngka, formatRupiah, formatPersen, formatAngka } from "../lib/format";
@@ -30,8 +31,8 @@ export default function IklanProfitCalculator() {
   useTrackPemakaian("iklan-profit", hasil.valid);
 
   return (
-    <div className="grid gap-6 md:grid-cols-2">
-      <div className="grid gap-4">
+    <div className="space-y-4">
+      <div className="space-y-4 rounded-2xl bg-surface p-4 soft-shadow">
         <NumberInput
           label="Total biaya iklan"
           value={biayaIklan}
@@ -62,42 +63,51 @@ export default function IklanProfitCalculator() {
         <FeeSelector value={fee} onChange={setFee} />
       </div>
 
-      <div className="grid content-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
-        <h3 className="text-sm font-semibold text-slate-500">
+      <div className="rounded-2xl border border-primary-container bg-surface p-4 soft-shadow">
+        <h3 className="mb-4 text-base font-semibold text-ink">
           Simulasi berdasarkan input Anda
         </h3>
         {hasil.valid ? (
-          <>
-            <ResultRow
-              label="Estimasi untung bersih setelah iklan"
-              value={formatRupiah(hasil.profit)}
-              emphasis
-            />
-            <ResultRow
-              label="Biaya iklan per order"
-              value={formatRupiah(hasil.biayaIklanPerOrder)}
-            />
-            <ResultRow
-              label="ROAS (omzet ÷ biaya iklan)"
-              value={
-                Number.isFinite(hasil.roas) ? `${formatAngka(hasil.roas)}x` : "-"
-              }
-            />
-            <ResultRow
-              label="Margin setelah iklan"
-              value={formatPersen(hasil.marginPersen)}
-            />
+          <div className="space-y-4">
+            <div>
+              <p className="text-xs font-semibold tracking-wide text-ink-soft">
+                Estimasi untung bersih setelah iklan
+              </p>
+              <p className="text-3xl font-bold text-primary">
+                {formatRupiah(hasil.profit)}
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <StatBox
+                label="Biaya iklan per order"
+                value={formatRupiah(hasil.biayaIklanPerOrder)}
+              />
+              <StatBox
+                label="ROAS"
+                value={
+                  Number.isFinite(hasil.roas)
+                    ? `${formatAngka(hasil.roas)}x`
+                    : "-"
+                }
+              />
+            </div>
+            <div className="space-y-3">
+              <ResultRow
+                label="Margin setelah iklan"
+                value={formatPersen(hasil.marginPersen)}
+              />
+            </div>
             <StatusBadge status={getStatus(hasil.marginPersen)} />
-          </>
+            <p className="text-[11px] text-ink-soft italic">
+              Untung bersih = omzet − (modal × order) − fee marketplace − biaya
+              iklan. Omzet naik belum tentu untung ikut naik.
+            </p>
+          </div>
         ) : (
-          <p className="rounded-lg bg-slate-50 p-3 text-sm text-slate-500">
-            {hasil.pesanError ?? "Lengkapi data di sebelah kiri."}
+          <p className="rounded-lg bg-surface-low p-3 text-sm text-ink-soft">
+            {hasil.pesanError ?? "Lengkapi data di atas."}
           </p>
         )}
-        <p className="text-xs text-slate-400">
-          Untung bersih = omzet − (modal × order) − fee marketplace − biaya iklan.
-          Omzet naik belum tentu untung ikut naik.
-        </p>
       </div>
     </div>
   );

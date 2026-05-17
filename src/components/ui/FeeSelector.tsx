@@ -9,7 +9,7 @@ interface Props {
 export default function FeeSelector({ value, onChange }: Props) {
   return (
     <div>
-      <span className="mb-1 block text-sm font-medium text-slate-700">
+      <span className="mb-1.5 block text-xs font-semibold tracking-wide text-ink">
         Fee marketplace
       </span>
       <div className="mb-2 flex flex-wrap gap-2">
@@ -21,10 +21,10 @@ export default function FeeSelector({ value, onChange }: Props) {
               type="button"
               onClick={() => onChange(String(preset.feePersen))}
               className={
-                "rounded-lg border px-3 py-2 text-sm " +
+                "rounded-full border px-4 py-2 text-xs font-semibold tracking-wide transition-colors " +
                 (aktif
-                  ? "border-teal-600 bg-teal-50 font-medium text-teal-700"
-                  : "border-slate-300 bg-white text-slate-600")
+                  ? "border-primary bg-primary-container text-on-primary-container"
+                  : "border-outline-variant bg-surface text-ink-soft hover:bg-surface-variant")
               }
             >
               {preset.nama}
@@ -38,7 +38,7 @@ export default function FeeSelector({ value, onChange }: Props) {
         onChange={onChange}
         suffix="%"
       />
-      <p className="mt-1 text-xs text-slate-500">{CATATAN_FEE}</p>
+      <p className="mt-1 text-[11px] text-ink-soft">{CATATAN_FEE}</p>
     </div>
   );
 }

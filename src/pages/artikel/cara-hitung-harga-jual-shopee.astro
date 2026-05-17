@@ -21,18 +21,23 @@ const faq = [
 <BaseLayout
   title="Cara Hitung Harga Jual di Shopee Agar Tetap Untung"
   description="Panduan langkah demi langkah menghitung harga jual minimum di Shopee setelah modal, fee, diskon, dan biaya iklan, lengkap dengan kalkulator."
+  activeNav="panduan"
 >
-  <article class="grid gap-8">
+  <article class="grid gap-6">
     <header>
-      <p class="text-sm text-teal-600">
-        <a href="/artikel" class="hover:underline">Panduan</a>
-      </p>
-      <h1 class="mt-1 text-2xl font-bold text-slate-900">
+      <a
+        href="/artikel"
+        class="inline-flex items-center gap-1 text-sm font-semibold text-primary"
+      >
+        <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+        Panduan
+      </a>
+      <h1 class="mt-2 text-2xl font-bold text-ink">
         Cara Hitung Harga Jual di Shopee Agar Tetap Untung
       </h1>
     </header>
 
-    <section class="grid gap-3 text-slate-600">
+    <section class="grid gap-3 text-secondary">
       <p>
         Banyak seller menentukan harga jual dengan menebak atau meniru kompetitor.
         Akibatnya, harga terlihat menarik tetapi untung tipis atau malah rugi
@@ -45,9 +50,9 @@ const faq = [
       </p>
     </section>
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Contoh angka</h2>
-      <p class="mt-2 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Contoh angka</h2>
+      <p class="mt-2 text-sm text-secondary">
         Modal Rp20.000, packing Rp2.000, iklan Rp1.000, fee 8%, target untung
         15%. Total biaya tetap Rp23.000. Harga jual minimum = 23.000 ÷ (1 − 0,08
         − 0,15) ≈ <strong>Rp29.870</strong>. Menjual di bawah angka itu berarti
@@ -56,46 +61,48 @@ const faq = [
     </section>
 
     <section>
-      <h2 class="mb-3 text-lg font-semibold text-slate-900">
+      <h2 class="mb-3 text-lg font-semibold text-ink">
         Hitung dengan angka toko Anda
       </h2>
       <HargaJualCalculator client:load />
     </section>
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
-      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-secondary">
         <li>Lupa memasukkan biaya packing dan iklan.</li>
         <li>Mengira fee dihitung dari modal, padahal dari harga jual.</li>
         <li>Tidak menyisakan margin untuk retur dan refund.</li>
       </ul>
     </section>
 
-    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
-      <h2 class="text-lg font-semibold text-teal-800">Catat profit Anda</h2>
-      <p class="mt-1 text-sm text-teal-700">
-        Setelah tahu harga jual, pantau hasilnya dengan
-        <a
-          href="/template"
-          class="font-semibold underline"
-          data-ga-event="cta_template_diklik"
-          data-ga-lokasi="artikel-harga-jual"
-        >
-          Bundle Template Seller Marketplace</a
-        >.
+    <section class="rounded-2xl bg-primary-container p-5 text-center soft-shadow">
+      <h2 class="text-lg font-semibold text-on-primary">Catat profit Anda</h2>
+      <p class="mt-1 mb-3 text-sm text-on-primary-container">
+        Setelah tahu harga jual, pantau hasilnya dengan Bundle Template Seller
+        Marketplace.
       </p>
+      <a
+        href="/template"
+        class="inline-flex items-center gap-1 rounded-lg bg-surface px-5 py-2.5 text-sm font-semibold text-primary"
+        data-ga-event="cta_template_diklik"
+        data-ga-lokasi="artikel-harga-jual"
+      >
+        Lihat template
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
-      <div class="mt-2 grid gap-3">
+      <h2 class="mb-2 text-lg font-semibold text-ink">Pertanyaan umum</h2>
+      <div class="grid gap-2">
         {
           faq.map((item) => (
-            <details class="rounded-lg border border-slate-200 bg-white p-3">
-              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+            <details class="rounded-lg border border-outline-variant bg-surface p-3">
+              <summary class="cursor-pointer text-sm font-semibold text-ink">
                 {item.q}
               </summary>
-              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+              <p class="mt-2 text-sm text-secondary">{item.a}</p>
             </details>
           ))
         }

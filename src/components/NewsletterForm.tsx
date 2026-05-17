@@ -21,9 +21,9 @@ export default function NewsletterForm() {
 
   if (terkirim) {
     return (
-      <div className="rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-800">
-        <p className="font-semibold">Terima kasih sudah mendaftar.</p>
-        <p className="mt-1">
+      <div className="rounded-lg bg-surface p-4 text-left text-sm text-ink">
+        <p className="font-semibold text-primary">Terima kasih sudah mendaftar.</p>
+        <p className="mt-1 text-ink-soft">
           Email <strong>{email.trim()}</strong> tercatat. Catatan teknis: form
           ini belum terhubung ke layanan pengiriman email — hubungkan ke
           penyedia newsletter Anda sebelum dipakai di produksi.
@@ -39,16 +39,18 @@ export default function NewsletterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Alamat email Anda"
-        className="rounded-lg border border-slate-300 bg-white px-3 py-3 text-base outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100"
+        className="rounded-lg border border-outline-variant bg-surface px-4 py-3 text-base text-ink outline-none focus:border-primary focus:ring-1 focus:ring-primary"
       />
       <button
         type="submit"
-        className="rounded-lg bg-teal-700 px-5 py-3 text-base font-semibold text-white hover:bg-teal-800"
+        className="rounded-lg bg-surface px-5 py-3 text-sm font-semibold tracking-wide text-primary transition-colors hover:bg-surface-container"
       >
         Kirim template gratis
       </button>
       {error && (
-        <p className="text-sm text-rose-600 sm:col-span-2">{error}</p>
+        <p className="text-sm text-on-primary-container sm:col-span-2">
+          {error}
+        </p>
       )}
     </form>
   );

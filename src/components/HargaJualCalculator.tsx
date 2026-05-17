@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import NumberInput from "./ui/NumberInput";
 import FeeSelector from "./ui/FeeSelector";
 import ResultRow from "./ui/ResultRow";
+import StatBox from "./ui/StatBox";
 import StatusBadge from "./ui/StatusBadge";
 import { hitungHargaJual } from "../lib/calc";
 import { parseAngka, formatRupiah, formatPersen } from "../lib/format";
@@ -34,8 +35,8 @@ export default function HargaJualCalculator() {
   useTrackPemakaian("harga-jual", hasil.valid);
 
   return (
-    <div className="grid gap-6 md:grid-cols-2">
-      <div className="grid gap-4">
+    <div className="space-y-4">
+      <div className="space-y-4 rounded-2xl bg-surface p-4 soft-shadow">
         <NumberInput
           label="Modal produk"
           value={modal}
@@ -81,44 +82,51 @@ export default function HargaJualCalculator() {
         />
       </div>
 
-      <div className="grid content-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
-        <h3 className="text-sm font-semibold text-slate-500">
+      <div className="rounded-2xl border border-primary-container bg-surface p-4 soft-shadow">
+        <h3 className="mb-4 text-base font-semibold text-ink">
           Simulasi berdasarkan input Anda
         </h3>
         {hasil.valid ? (
-          <>
-            <ResultRow
-              label="Perkiraan harga jual minimum"
-              value={formatRupiah(hasil.hargaJualMinimum)}
-              emphasis
-            />
-            <ResultRow
-              label="Harga setelah diskon"
-              value={formatRupiah(hasil.hargaSetelahDiskon)}
-            />
-            <ResultRow
-              label="Estimasi untung bersih"
-              value={formatRupiah(hasil.profit)}
-            />
-            <ResultRow
-              label="Margin akhir"
-              value={formatPersen(hasil.marginPersen)}
-            />
-            <ResultRow
-              label="Batas diskon aman"
-              value={formatPersen(hasil.batasDiskonAman)}
-            />
+          <div className="space-y-4">
+            <div>
+              <p className="text-xs font-semibold tracking-wide text-ink-soft">
+                Perkiraan harga jual minimum
+              </p>
+              <p className="text-3xl font-bold text-primary">
+                {formatRupiah(hasil.hargaJualMinimum)}
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <StatBox
+                label="Estimasi untung bersih"
+                value={formatRupiah(hasil.profit)}
+              />
+              <StatBox
+                label="Margin akhir"
+                value={formatPersen(hasil.marginPersen)}
+              />
+            </div>
+            <div className="space-y-3">
+              <ResultRow
+                label="Harga setelah diskon"
+                value={formatRupiah(hasil.hargaSetelahDiskon)}
+              />
+              <ResultRow
+                label="Batas diskon aman"
+                value={formatPersen(hasil.batasDiskonAman)}
+              />
+            </div>
             <StatusBadge status={getStatus(hasil.marginPersen)} />
-          </>
+            <p className="text-[11px] text-ink-soft italic">
+              Rumus: harga jual minimum = (modal + packing + iklan) ÷ ((1 −
+              diskon) × (1 − fee − affiliate − target margin)).
+            </p>
+          </div>
         ) : (
-          <p className="rounded-lg bg-slate-50 p-3 text-sm text-slate-500">
-            {hasil.pesanError ?? "Lengkapi data di sebelah kiri."}
+          <p className="rounded-lg bg-surface-low p-3 text-sm text-ink-soft">
+            {hasil.pesanError ?? "Lengkapi data di atas."}
           </p>
         )}
-        <p className="text-xs text-slate-400">
-          Rumus: harga jual minimum = (modal + packing + iklan) ÷ ((1 − diskon) ×
-          (1 − fee − affiliate − target margin)).
-        </p>
       </div>
     </div>
   );

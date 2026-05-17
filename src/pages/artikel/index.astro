@@ -6,16 +6,19 @@ const artikel = [
     href: "/artikel/cara-hitung-harga-jual-shopee",
     judul: "Cara Hitung Harga Jual di Shopee Agar Tetap Untung",
     desc: "Langkah menentukan harga jual minimum setelah modal, fee, dan biaya lain.",
+    icon: "calculate",
   },
   {
     href: "/artikel/cara-hitung-diskon-marketplace",
     judul: "Cara Hitung Diskon Marketplace Tanpa Rugi",
     desc: "Cara tahu sampai berapa persen diskon promo masih aman untuk toko Anda.",
+    icon: "percent",
   },
   {
     href: "/artikel/cara-hitung-profit-setelah-iklan",
     judul: "Cara Hitung Profit Setelah Iklan Marketplace",
     desc: "Cara memastikan omzet dari iklan benar-benar menghasilkan untung.",
+    icon: "trending_up",
   },
 ];
 ---
@@ -23,10 +26,11 @@ const artikel = [
 <BaseLayout
   title="Panduan Seller Marketplace | Toolkit Seller Indonesia"
   description="Kumpulan panduan praktis untuk seller marketplace Indonesia: cara hitung harga jual, diskon, dan profit setelah iklan."
+  activeNav="panduan"
 >
   <section class="mb-6">
-    <h1 class="text-2xl font-bold text-slate-900">Panduan Seller Marketplace</h1>
-    <p class="mt-2 text-slate-600">
+    <h1 class="text-2xl font-bold text-ink">Panduan Seller Marketplace</h1>
+    <p class="mt-2 text-secondary">
       Panduan singkat yang langsung disertai kalkulator agar Anda bisa menghitung
       dengan angka toko sendiri.
     </p>
@@ -37,13 +41,21 @@ const artikel = [
       artikel.map((a) => (
         <a
           href={a.href}
-          class="block rounded-xl border border-slate-200 bg-white p-4 transition hover:border-teal-400 hover:shadow-sm"
+          class="flex items-start gap-3 rounded-2xl bg-surface p-4 soft-shadow transition hover:-translate-y-0.5"
         >
-          <h2 class="text-base font-semibold text-teal-700">{a.judul}</h2>
-          <p class="mt-1 text-sm text-slate-600">{a.desc}</p>
-          <span class="mt-2 inline-block text-sm font-medium text-teal-600">
-            Baca panduan →
+          <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-surface-low">
+            <span class="material-symbols-outlined text-primary">{a.icon}</span>
           </span>
+          <div>
+            <h2 class="text-base font-semibold text-ink">{a.judul}</h2>
+            <p class="mt-1 text-sm text-secondary">{a.desc}</p>
+            <span class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+              Baca panduan
+              <span class="material-symbols-outlined text-[16px]">
+                arrow_forward
+              </span>
+            </span>
+          </div>
         </a>
       ))
     }

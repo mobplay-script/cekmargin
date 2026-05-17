@@ -21,18 +21,23 @@ const faq = [
 <BaseLayout
   title="Cara Hitung Diskon Marketplace Tanpa Rugi"
   description="Panduan menghitung apakah diskon promo masih untung, berapa diskon maksimum yang aman, dan titik rugi, lengkap dengan kalkulator."
+  activeNav="panduan"
 >
-  <article class="grid gap-8">
+  <article class="grid gap-6">
     <header>
-      <p class="text-sm text-teal-600">
-        <a href="/artikel" class="hover:underline">Panduan</a>
-      </p>
-      <h1 class="mt-1 text-2xl font-bold text-slate-900">
+      <a
+        href="/artikel"
+        class="inline-flex items-center gap-1 text-sm font-semibold text-primary"
+      >
+        <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+        Panduan
+      </a>
+      <h1 class="mt-2 text-2xl font-bold text-ink">
         Cara Hitung Diskon Marketplace Tanpa Rugi
       </h1>
     </header>
 
-    <section class="grid gap-3 text-slate-600">
+    <section class="grid gap-3 text-secondary">
       <p>
         Promo diskon menarik banyak pembeli, tetapi juga bisa menggerus untung
         tanpa disadari. Sebelum ikut promo 10%, 20%, atau 30%, hitung dulu apakah
@@ -45,9 +50,9 @@ const faq = [
       </p>
     </section>
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Contoh angka</h2>
-      <p class="mt-2 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Contoh angka</h2>
+      <p class="mt-2 text-sm text-secondary">
         Harga normal Rp50.000, modal Rp25.000, packing Rp2.000, fee 8%. Tanpa
         diskon untung ≈ Rp19.000. Dengan diskon 20%, untung turun menjadi ≈
         <strong>Rp9.800</strong>. Titik rugi ada di sekitar diskon 41%.
@@ -55,47 +60,48 @@ const faq = [
     </section>
 
     <section>
-      <h2 class="mb-3 text-lg font-semibold text-slate-900">
+      <h2 class="mb-3 text-lg font-semibold text-ink">
         Cek diskon Anda di sini
       </h2>
       <DiskonAmanCalculator client:load />
     </section>
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
-      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-secondary">
         <li>Mengikuti beberapa promo bertumpuk tanpa menghitung total potongan.</li>
         <li>Memberi diskon melebihi titik rugi demi mengejar jumlah order.</li>
         <li>Lupa fee marketplace tetap dipotong setelah diskon.</li>
       </ul>
     </section>
 
-    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
-      <h2 class="text-lg font-semibold text-teal-800">Rencanakan promo Anda</h2>
-      <p class="mt-1 text-sm text-teal-700">
-        Template simulasi diskon di
-        <a
-          href="/template"
-          class="font-semibold underline"
-          data-ga-event="cta_template_diklik"
-          data-ga-lokasi="artikel-diskon"
-        >
-          Bundle Template Seller Marketplace</a
-        >
-        membantu Anda merencanakan promo tanpa rugi.
+    <section class="rounded-2xl bg-primary-container p-5 text-center soft-shadow">
+      <h2 class="text-lg font-semibold text-on-primary">Rencanakan promo Anda</h2>
+      <p class="mt-1 mb-3 text-sm text-on-primary-container">
+        Template simulasi diskon di Bundle Template Seller Marketplace membantu
+        Anda merencanakan promo tanpa rugi.
       </p>
+      <a
+        href="/template"
+        class="inline-flex items-center gap-1 rounded-lg bg-surface px-5 py-2.5 text-sm font-semibold text-primary"
+        data-ga-event="cta_template_diklik"
+        data-ga-lokasi="artikel-diskon"
+      >
+        Lihat template
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
-      <div class="mt-2 grid gap-3">
+      <h2 class="mb-2 text-lg font-semibold text-ink">Pertanyaan umum</h2>
+      <div class="grid gap-2">
         {
           faq.map((item) => (
-            <details class="rounded-lg border border-slate-200 bg-white p-3">
-              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+            <details class="rounded-lg border border-outline-variant bg-surface p-3">
+              <summary class="cursor-pointer text-sm font-semibold text-ink">
                 {item.q}
               </summary>
-              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+              <p class="mt-2 text-sm text-secondary">{item.a}</p>
             </details>
           ))
         }

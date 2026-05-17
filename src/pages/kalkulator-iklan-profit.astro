@@ -22,34 +22,30 @@ const faq = [
   title="Kalkulator Iklan vs Profit | Toolkit Seller Indonesia"
   description="Hitung untung bersih setelah biaya iklan, biaya iklan per order, ROAS, dan margin akhir untuk seller marketplace Indonesia."
 >
-  <article class="grid gap-8">
+  <article class="grid gap-6">
     <header>
-      <h1 class="text-2xl font-bold text-slate-900">
-        Kalkulator Iklan vs Profit
-      </h1>
-      <p class="mt-2 text-slate-600">
+      <h1 class="text-2xl font-bold text-ink">Kalkulator Iklan vs Profit</h1>
+      <p class="mt-2 text-secondary">
         Setelah pasang iklan, omzet biasanya naik. Tetapi untung belum tentu ikut
         naik. Kalkulator ini menghitung untung bersih setelah biaya iklan, biaya
         iklan per order, dan ROAS sederhana.
       </p>
     </header>
 
-    <section>
-      <IklanProfitCalculator client:load />
-    </section>
+    <IklanProfitCalculator client:load />
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Contoh perhitungan</h2>
-      <p class="mt-2 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Contoh perhitungan</h2>
+      <p class="mt-2 text-sm text-secondary">
         Biaya iklan Rp200.000, omzet Rp1.000.000, 20 order, modal Rp25.000 per
         order, fee 8%. Untung bersih = 1.000.000 − 500.000 − 80.000 − 200.000 =
         <strong>Rp220.000</strong>. Biaya iklan per order Rp10.000 dan ROAS 5x.
       </p>
     </section>
 
-    <section class="rounded-xl border border-slate-200 bg-white p-4">
-      <h2 class="text-lg font-semibold text-slate-900">Kesalahan umum</h2>
-      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+    <section class="rounded-2xl bg-surface p-4 soft-shadow">
+      <h2 class="text-lg font-semibold text-ink">Kesalahan umum</h2>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-secondary">
         <li>Menilai iklan hanya dari ROAS tanpa melihat untung bersih.</li>
         <li>Lupa memasukkan fee marketplace ke dalam hitungan.</li>
         <li>Menganggap semua order berasal dari iklan, padahal sebagian organik.</li>
@@ -57,32 +53,35 @@ const faq = [
       </ul>
     </section>
 
-    <section class="rounded-xl border border-teal-200 bg-teal-50 p-4">
-      <h2 class="text-lg font-semibold text-teal-800">
+    <section class="rounded-2xl bg-primary-container p-5 text-center soft-shadow">
+      <h2 class="text-lg font-semibold text-on-primary">
         Mau pantau profit tiap bulan?
       </h2>
-      <p class="mt-1 text-sm text-teal-700">
-        Template laporan penjualan di
-        <a
-          href="/template"
-          class="font-semibold underline"
-          data-ga-event="cta_template_diklik"
-          data-ga-lokasi="kalkulator-iklan-profit"
-          >Bundle Template Seller Marketplace</a
-        > membantu Anda melacak biaya iklan dan untung bersih bulanan.
+      <p class="mt-1 mb-3 text-sm text-on-primary-container">
+        Template laporan penjualan di Bundle Template Seller Marketplace membantu
+        Anda melacak biaya iklan dan untung bersih bulanan.
       </p>
+      <a
+        href="/template"
+        class="inline-flex items-center gap-1 rounded-lg bg-surface px-5 py-2.5 text-sm font-semibold text-primary"
+        data-ga-event="cta_template_diklik"
+        data-ga-lokasi="kalkulator-iklan-profit"
+      >
+        Lihat template
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Pertanyaan umum</h2>
-      <div class="mt-2 grid gap-3">
+      <h2 class="mb-2 text-lg font-semibold text-ink">Pertanyaan umum</h2>
+      <div class="grid gap-2">
         {
           faq.map((item) => (
-            <details class="rounded-lg border border-slate-200 bg-white p-3">
-              <summary class="cursor-pointer text-sm font-medium text-slate-800">
+            <details class="rounded-lg border border-outline-variant bg-surface p-3">
+              <summary class="cursor-pointer text-sm font-semibold text-ink">
                 {item.q}
               </summary>
-              <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+              <p class="mt-2 text-sm text-secondary">{item.a}</p>
             </details>
           ))
         }
