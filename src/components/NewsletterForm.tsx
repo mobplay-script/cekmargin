@@ -24,9 +24,21 @@ export default function NewsletterForm() {
       <div className="rounded-lg bg-surface p-4 text-left text-sm text-ink">
         <p className="font-semibold text-primary">Terima kasih sudah mendaftar.</p>
         <p className="mt-1 text-ink-soft">
-          Email <strong>{email.trim()}</strong> tercatat. Catatan teknis: form
-          ini belum terhubung ke layanan pengiriman email — hubungkan ke
-          penyedia newsletter Anda sebelum dipakai di produksi.
+          Template profit per produk Anda siap diunduh:
+        </p>
+        <a
+          href="/Template-Profit-per-Produk.xlsx"
+          download
+          onClick={() => trackEvent("template_gratis_download")}
+          className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary"
+        >
+          <span className="material-symbols-outlined text-[18px]">download</span>
+          Download Template (.xlsx)
+        </a>
+        <p className="mt-3 text-xs text-ink-soft">
+          Buka dengan Google Sheets atau Excel. Catatan teknis: email{" "}
+          <strong>{email.trim()}</strong> belum dikirim ke layanan newsletter —
+          hubungkan penyedia email Anda sebelum dipakai di produksi.
         </p>
       </div>
     );
